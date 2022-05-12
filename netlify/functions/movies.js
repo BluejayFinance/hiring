@@ -1,12 +1,19 @@
 exports.handler = async (event, context) => {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+  };
   if(Math.random() <= 0.2) {
     return {
       statusCode: 500,
+      headers,
       body: JSON.stringify({message: "Something wrong happened."})
     }  
   }
   return {
     statusCode: 200,
+    headers,
     body: JSON.stringify([
       {
         "name": "Deadpool",
